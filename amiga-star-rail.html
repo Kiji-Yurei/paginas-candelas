@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Para Mi Mejor Amiga - Honkai Star Rail 🌟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 160px 30px, #ddd, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: sparkle 20s linear infinite;
+        }
+
+        @keyframes sparkle {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .main-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .heart-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .heart {
+            font-size: 2rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        .heart:nth-child(2) { animation-delay: 0.2s; }
+        .heart:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .joke-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #ff6b6b;
+            transition: all 0.3s ease;
+        }
+
+        .joke-card:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(10px);
+        }
+
+        .joke-question {
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .joke-answer {
+            color: #ffd700;
+            font-style: italic;
+        }
+
+        .message-card {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.2));
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .message-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .character-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .character-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .character-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .character-emoji {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        .character-name {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .character-description {
+            color: #ccc;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .special-message {
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            margin: 20px 0;
+            text-shadow: 0 0 10px rgba(255, 107, 107, 0.5);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        .floating-element:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-element:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 2s; }
+        .floating-element:nth-child(4) { bottom: 20%; right: 10%; animation-delay: 3s; }
+        .floating-element:nth-child(5) { top: 50%; left: 5%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .character-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="floating-elements">
+        <div class="floating-element">⭐</div>
+        <div class="floating-element">🌟</div>
+        <div class="floating-element">💫</div>
+        <div class="floating-element">✨</div>
+        <div class="floating-element">🎆</div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1 class="main-title">🌟 Para Mi Mejor Amiga 🌟</h1>
+            <p class="subtitle">Un viaje estelar lleno de amor y risas</p>
+            <div class="heart-container">
+                <div class="heart">💖</div>
+                <div class="heart">💕</div>
+                <div class="heart">💗</div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2>🎭 Chistes de Honkai Star Rail</h2>
+            <div class="joke-card">
+                <div class="joke-question">¿Por qué March 7th siempre lleva su cámara?</div>
+                <div class="joke-answer">¡Porque quiere capturar todos los momentos "March"avillosos! 📸</div>
+            </div>
+            <div class="joke-card">
+                <div class="joke-question">¿Qué le dice Dan Heng a su lanza?</div>
+                <div class="joke-answer">"Eres la punta de mi vida" 🗡️</div>
+            </div>
+            <div class="joke-card">
+                <div class="joke-question">¿Por qué Kafka es tan buena en el combate?</div>
+                <div class="joke-answer">¡Porque tiene "Kafka"nada de experiencia! 😄</div>
+            </div>
+            <div class="joke-card">
+                <div class="joke-question">¿Qué hace Himeko cuando está aburrida?</div>
+                <div class="joke-answer">¡Se toma un "Himeko"ffee! ☕</div>
+            </div>
+            <div class="joke-card">
+                <div class="joke-question">¿Por qué Welt Yang siempre está serio?</div>
+                <div class="joke-answer">¡Porque tiene el peso del "Welt" sobre sus hombros! 🌍</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>💝 Palabras Bonitas</h2>
+            <div class="message-card">
+                <div class="message-text">
+                    Eres como una estrella brillante en mi universo personal. Tu amistad ilumina mis días más oscuros y hace que cada momento sea especial. 🌟
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-text">
+                    Contigo, cada aventura es más emocionante, cada risa es más contagiosa, y cada día es una nueva oportunidad para crear recuerdos inolvidables. ✨
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-text">
+                    Eres mi compañera de viaje en esta travesía llamada vida. Juntas hemos superado tormentas y celebrado victorias. ¡Eres mi heroína personal! 🦸‍♀️
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-text">
+                    Tu corazón es tan puro como el cristal de una estrella, y tu sonrisa es más brillante que cualquier constelación. ¡Eres simplemente perfecta! 💎
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎮 Personajes que nos representan</h2>
+            <div class="character-section">
+                <div class="character-card">
+                    <div class="character-emoji">🚂</div>
+                    <div class="character-name">Astral Express</div>
+                    <div class="character-description">Como el tren estelar, juntas viajamos por la vida descubriendo nuevos mundos y aventuras increíbles.</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-emoji">🌟</div>
+                    <div class="character-name">Trailblazer</div>
+                    <div class="character-description">Somos exploradoras del universo, siempre listas para nuevas aventuras y descubrimientos.</div>
+                </div>
+                <div class="character-card">
+                    <div class="character-emoji">💫</div>
+                    <div class="character-name">Stellaron Hunters</div>
+                    <div class="character-description">Como cazadoras de estrellas, perseguimos nuestros sueños sin miedo y con determinación.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎵 Frases que te describen</h2>
+            <div class="message-card">
+                <div class="message-text">
+                    "Eres la constelación más brillante en mi cielo nocturno" 🌌
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-text">
+                    "Tu amistad es el tesoro más valioso que he encontrado en este universo" 💎
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-text">
+                    "Contigo, cada día es una nueva aventura esperando ser descubierta" 🗺️
+                </div>
+            </div>
+            <div class="message-card">
+                <div class="message-text">
+                    "Eres mi compañera de viaje, mi confidente, mi hermana del corazón" 👭
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h3>🌟 Para Mi Mejor Amiga 🌟</h3>
+            <div class="special-message">
+                Gracias por ser la estrella que ilumina mi camino
+            </div>
+            <div class="heart-container">
+                <div class="heart">💖</div>
+                <div class="heart">💕</div>
+                <div class="heart">💗</div>
+                <div class="heart">💓</div>
+                <div class="heart">💝</div>
+            </div>
+            <p style="margin-top: 20px; color: #ccc;">
+                Con todo mi amor y cariño ❤️<br>
+                Tu mejor amiga que te quiere infinito
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Efecto de escritura para el título principal
+        const mainTitle = document.querySelector('.main-title');
+        const originalText = mainTitle.textContent;
+        mainTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                mainTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150);
+            }
+        };
+
+        // Efecto de aparición para las tarjetas
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar efecto a las secciones
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            observer.observe(section);
+        });
+
+        // Efecto de confeti cuando se hace clic
+        document.addEventListener('click', (e) => {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.left = e.clientX + 'px';
+            confetti.style.top = e.clientY + 'px';
+            confetti.style.fontSize = '20px';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '1000';
+            confetti.textContent = ['✨', '💖', '🌟', '💫', '💕'][Math.floor(Math.random() * 5)];
+            
+            document.body.appendChild(confetti);
+            
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: 'translateY(-100px) rotate(360deg)', opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'ease-out'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        });
+
+        // Iniciar efectos cuando la página cargue
+        window.addEventListener('load', () => {
+            setTimeout(typeWriter, 500);
+        });
+
+        // Efecto de música de fondo (simulado)
+        const playBackgroundMusic = () => {
+            console.log('🎵 Música de Honkai Star Rail sonando en el fondo...');
+        };
+
+        // Simular música cuando se hace clic en el título
+        document.querySelector('.main-title').addEventListener('click', playBackgroundMusic);
+    </script>
+</body>
+</html> 
