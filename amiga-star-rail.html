@@ -429,28 +429,47 @@
             observer.observe(section);
         });
 
-        // Efecto de confeti cuando se hace clic
+        // Efecto de confeti mejorado cuando se hace clic
         document.addEventListener('click', (e) => {
-            const confetti = document.createElement('div');
-            confetti.style.position = 'fixed';
-            confetti.style.left = e.clientX + 'px';
-            confetti.style.top = e.clientY + 'px';
-            confetti.style.fontSize = '20px';
-            confetti.style.pointerEvents = 'none';
-            confetti.style.zIndex = '1000';
-            confetti.textContent = ['✨', '💖', '🌟', '💫', '💕', '🌙'][Math.floor(Math.random() * 6)];
-            
-            document.body.appendChild(confetti);
-            
-            const animation = confetti.animate([
-                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                { transform: 'translateY(-100px) rotate(360deg)', opacity: 0 }
-            ], {
-                duration: 1000,
-                easing: 'ease-out'
-            });
-            
-            animation.onfinish = () => confetti.remove();
+            // Crear múltiples elementos para un efecto más espectacular
+            for (let i = 0; i < 8; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = e.clientX + 'px';
+                confetti.style.top = e.clientY + 'px';
+                confetti.style.fontSize = '25px';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '1000';
+                confetti.style.userSelect = 'none';
+                
+                // Array con más elementos lunares y estelares
+                const elements = ['✨', '💖', '🌟', '💫', '💕', '🌙', '⭐', '🌠', '💫', '✨', '🌙', '🌟'];
+                confetti.textContent = elements[Math.floor(Math.random() * elements.length)];
+                
+                document.body.appendChild(confetti);
+                
+                // Animación más variada y espectacular
+                const randomX = (Math.random() - 0.5) * 200;
+                const randomY = -100 - Math.random() * 100;
+                const randomRotation = Math.random() * 720;
+                const randomScale = 0.5 + Math.random() * 1;
+                
+                const animation = confetti.animate([
+                    { 
+                        transform: 'translateY(0) translateX(0) rotate(0deg) scale(1)', 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translateY(${randomY}px) translateX(${randomX}px) rotate(${randomRotation}deg) scale(${randomScale})`, 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: 1500 + Math.random() * 500,
+                    easing: 'ease-out'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
         });
 
         // Iniciar efectos cuando la página cargue
@@ -465,6 +484,94 @@
 
         // Simular música cuando se hace clic en el título
         document.querySelector('.main-title').addEventListener('click', playBackgroundMusic);
+
+        // Efecto especial para las tarjetas de mensaje
+        document.querySelectorAll('.message-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Crear un efecto especial de "explosión" de estrellas
+                for (let i = 0; i < 15; i++) {
+                    const star = document.createElement('div');
+                    star.style.position = 'fixed';
+                    star.style.left = e.clientX + 'px';
+                    star.style.top = e.clientY + 'px';
+                    star.style.fontSize = '30px';
+                    star.style.pointerEvents = 'none';
+                    star.style.zIndex = '1000';
+                    star.style.userSelect = 'none';
+                    
+                    const starElements = ['✨', '🌟', '🌙', '⭐', '🌠', '💫'];
+                    star.textContent = starElements[Math.floor(Math.random() * starElements.length)];
+                    
+                    document.body.appendChild(star);
+                    
+                    // Animación de explosión radial
+                    const angle = (i / 15) * 2 * Math.PI;
+                    const distance = 100 + Math.random() * 100;
+                    const endX = Math.cos(angle) * distance;
+                    const endY = Math.sin(angle) * distance;
+                    
+                    const animation = star.animate([
+                        { 
+                            transform: 'translateY(0) translateX(0) scale(0)', 
+                            opacity: 0 
+                        },
+                        { 
+                            transform: 'translateY(0) translateX(0) scale(1)', 
+                            opacity: 1 
+                        },
+                        { 
+                            transform: `translateY(${endY}px) translateX(${endX}px) scale(0.5)`, 
+                            opacity: 0 
+                        }
+                    ], {
+                        duration: 2000,
+                        easing: 'ease-out'
+                    });
+                    
+                    animation.onfinish = () => star.remove();
+                }
+            });
+        });
+
+        // Efecto especial para el header
+        document.querySelector('header').addEventListener('click', (e) => {
+            // Crear una lluvia de corazones
+            for (let i = 0; i < 10; i++) {
+                const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.left = e.clientX + (Math.random() - 0.5) * 100 + 'px';
+                heart.style.top = e.clientY + 'px';
+                heart.style.fontSize = '35px';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '1000';
+                heart.style.userSelect = 'none';
+                
+                const hearts = ['💖', '💕', '💗', '💓', '💝'];
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                
+                document.body.appendChild(heart);
+                
+                const animation = heart.animate([
+                    { 
+                        transform: 'translateY(0) scale(0)', 
+                        opacity: 0 
+                    },
+                    { 
+                        transform: 'translateY(-50px) scale(1.2)', 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: 'translateY(-150px) scale(0.8)', 
+                        opacity: 0 
+                    }
+                ], {
+                    duration: 1800,
+                    easing: 'ease-out'
+                });
+                
+                animation.onfinish = () => heart.remove();
+            }
+        });
     </script>
 </body>
 </html> 
